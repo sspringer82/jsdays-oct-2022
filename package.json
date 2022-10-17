@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "`npm init`=> package.json",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
