@@ -13,13 +13,15 @@
     "type": "git",
     "url": "git+https://github.com/sspringer82/jsdays-oct-2022.git"
   },
-  "author": "Der Basti 👻",
+  "author": "Sebastian Springer<sebastian.springer@maibornwolff.de>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sspringer82/jsdays-oct-2022/issues"
   },
   "homepage": "https://github.com/sspringer82/jsdays-oct-2022#readme",
   "dependencies": {
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.11.0",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
