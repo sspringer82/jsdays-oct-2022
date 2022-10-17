@@ -8,7 +8,11 @@ npx tsc --init => tsconfig.json
 
 `npm create vite@latest typescript-app -- --template vanilla-ts`
 
+`npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint typescript`
+
 # Links
 
 - https://docs.npmjs.com/cli/v8/configuring-npm/package-json/
 - https://vitejs.dev/guide/
+- https://github.com/sindresorhus/eslint-plugin-unicorn
+- https://github.com/typicode/husky
