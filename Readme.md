@@ -16,3 +16,4 @@ npx tsc --init => tsconfig.json
 - https://vitejs.dev/guide/
 - https://github.com/sindresorhus/eslint-plugin-unicorn
 - https://github.com/typicode/husky
+- https://developer.mozilla.org/en-US/
