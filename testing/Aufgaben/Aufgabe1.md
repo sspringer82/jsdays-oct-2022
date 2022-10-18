@@ -23,4 +23,4 @@ Die Zielstruktur soll folgendermaßen aussehen:
 }
 ```
 
-Der Username hat 8 zeichen und Umlaute werden umgewandelt
+Der Username hat 8 zeichen und Umlaute (ä, ö, ü) werden umgewandelt (ae, oe, ue)

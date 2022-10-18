@@ -4,7 +4,8 @@
   "description": "- Testpatterns - Tooling - Coverage - Buildpipeline - Komponententest",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:cov": "npm test -- --coverage"
   },
   "keywords": [],
   "author": "",

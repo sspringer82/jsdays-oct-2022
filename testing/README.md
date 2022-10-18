@@ -12,6 +12,7 @@
 - https://jasmine.github.io/
 - https://mochajs.org/
 - https://npmtrends.com/
+- https://github.com/typicode/husky
 
 # Setup
 
