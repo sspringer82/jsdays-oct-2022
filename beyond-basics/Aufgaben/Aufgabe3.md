@@ -16,3 +16,5 @@ Integriere den React Router, um die Liste und das Formular anzuzeigen.
 - nutze die useParams-Funktion, um die id eines Datensatzes in der Form-Komponente zu laden
 - nutze die usePerson-Funktion, um auf die handleSave-Funktion zuzugreifen und zu speichern
 - navigiere nach dem Speichern zurück zur Liste (mit useNavigate)
+
+- https://github.com/remix-run/react-router/tree/dev/examples/basic/src
