@@ -50,6 +50,37 @@ describe('MapUser', () => {
       mu.mapUsername = jest.fn();
       mu.map(original);
       expect(mu.mapUsername).toHaveBeenCalled();
+      expect(mu.mapUsername).toHaveBeenCalledTimes(1);
+      expect(mu.mapUsername).toHaveBeenCalledWith('Klaus', 'Meier');
     });
+
+    it('should call mapUsername, when mapping', () => {
+      mu.mapUsername = jest.fn();
+      mu.mapUsername.mockReturnValue('12345678');
+      const result = mu.map(original);
+      expect(result).toEqual({
+        first_name: 'Klaus',
+        id: 1,
+        last_name: 'Meier',
+        user_name: '12345678',
+      });
+    });
+  });
+
+  it('should throw', () => {
+    expect(() => mu.myException()).toThrow();
+    expect(() => mu.myException()).toThrowError('whoops');
+  });
+
+  it('should async', (done) => {
+    const p = mu.myAsync();
+    p.then((data) => {
+      expect(data).toBe('whoooho');
+      done();
+    });
+  });
+  it('should async', async () => {
+    const data = await mu.myAsync();
+    expect(data).toBe('whoooho');
   });
 });

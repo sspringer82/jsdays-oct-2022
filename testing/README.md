@@ -13,6 +13,7 @@
 - https://mochajs.org/
 - https://npmtrends.com/
 - https://github.com/typicode/husky
+- https://angular.io/guide/testing
 
 # Setup
 

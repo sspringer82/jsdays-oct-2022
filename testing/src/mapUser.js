@@ -10,4 +10,15 @@ export default class MapUser {
   mapUsername(username) {
     return username.substring(0, 8);
   }
+  myException() {
+    throw new Error('whoops');
+  }
+
+  myAsync() {
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        res('whoooho');
+      }, 1000);
+    });
+  }
 }

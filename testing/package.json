@@ -8,7 +8,7 @@
     "test:cov": "npm test -- --coverage"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sebastian Springer <sebastian.springer@maibornwolff.de>",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.3",
