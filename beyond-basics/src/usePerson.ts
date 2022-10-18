@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Person, { InputPerson } from './Person';
+import { usePersonContext } from './PersonProvider';
 
 const url = `${process.env.REACT_APP_BACKEND_URL}/users`;
 
@@ -10,12 +11,12 @@ type ReturnValue = {
 };
 
 export default function usePerson(): ReturnValue {
-  const [persons, setPersons] = useState<Person[]>([]);
+  const [persons, setPersons] = usePersonContext();
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setPersons(data));
-  }, []);
+  }, [setPersons]);
 
   function handleDelete(id: number): void {
     fetch(`${url}/${id}`, { method: 'DELETE' }).then((response) => {

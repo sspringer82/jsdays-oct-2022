@@ -6,7 +6,7 @@ Lagere das Statemanagement in einen eigenen Context aus und binde ihn in den Cus
 
 - erzeuge einen `PersonContextType`, der den State modelliert
 
-```
+```ts
 type PersonContextType = [
   Person[],
   React.Dispatch<React.SetStateAction<Person[]>>
