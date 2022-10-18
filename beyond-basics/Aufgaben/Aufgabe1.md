@@ -15,5 +15,6 @@ Die Funktion liegt in der Datei `src/usePerson.ts`
 - Inhalte aus der Komponente in die Funktion kopieren
 - import-Statements fixen
 - Identifizieren welche Schnittstellen benötigt werden (person, handleDelete, handleSave)
+- in usePerson `clearAndHideForm();` in die Komponente zurücküberführen
 - Rückgabewert definieren `return {person, handleDelete, handleSave}`
 - usePerson in der Komponente aufrufen und Rückgabewert mit der Komponente verbinden `const {person, handleDelete, handleSave} = usePerson()`
