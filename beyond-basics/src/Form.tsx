@@ -1,7 +1,9 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import { InputPerson } from './Person';
 import usePerson from './usePerson';
+import { ErrorMessage } from '@hookform/error-message';
 
 const initialPerson: InputPerson = {
   firstName: '',
@@ -13,13 +15,18 @@ const initialPerson: InputPerson = {
 };
 
 const Form: React.FC = () => {
-  const [person, setPerson] = useState<InputPerson>(initialPerson);
   const navigate = useNavigate();
   const { handleSave } = usePerson();
   const { id } = useParams<{ id: string }>();
+  const {
+    handleSubmit,
+    register,
+    reset,
+    formState: { errors },
+  } = useForm<InputPerson>();
 
   function handleCancel() {
-    setPerson(initialPerson);
+    reset(initialPerson);
     navigate('/');
   }
 
@@ -27,85 +34,51 @@ const Form: React.FC = () => {
     if (id) {
       fetch(`${process.env.REACT_APP_BACKEND_URL}/users/${id}`)
         .then((response) => response.json())
-        .then((data) => setPerson(data));
+        .then((data) => reset(data));
     }
-  }, [id]);
+  }, [id, reset]);
 
-  function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    setPerson((prevPerson) => ({
-      ...prevPerson,
-      [event.target.name]: event.target.value,
-    }));
-  }
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+  function onSubmit(person: InputPerson) {
     handleSave(person);
-    setPerson(initialPerson);
     navigate('/');
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <label>
         first name:{' '}
         <input
           type="text"
-          name="firstName"
-          id="firstName"
-          value={person.firstName}
-          onChange={handleChange}
+          {...register('firstName', {
+            required: 'required, you fool',
+            minLength: 2,
+            maxLength: 20,
+          })}
         />{' '}
       </label>
+      <ErrorMessage errors={errors} name="firstName" />
       <label>
         last name:{' '}
         <input
           type="text"
-          name="lastName"
-          id="lastName"
-          value={person.lastName}
-          onChange={handleChange}
+          {...register('lastName', {
+            required: true,
+            minLength: 2,
+            maxLength: 20,
+          })}
         />{' '}
       </label>
       <label>
-        birth date:{' '}
-        <input
-          type="text"
-          name="birthdate"
-          id="birthdate"
-          value={person.birthdate}
-          onChange={handleChange}
-        />{' '}
+        birth date: <input type="text" {...register('birthdate')} />{' '}
       </label>
       <label>
-        street:{' '}
-        <input
-          type="text"
-          name="street"
-          id="street"
-          value={person.street}
-          onChange={handleChange}
-        />{' '}
+        street: <input type="text" {...register('street')} />{' '}
       </label>
       <label>
-        city:{' '}
-        <input
-          type="text"
-          name="city"
-          id="city"
-          value={person.city}
-          onChange={handleChange}
-        />{' '}
+        city: <input type="text" {...register('city')} />{' '}
       </label>
       <label>
-        zip code:{' '}
-        <input
-          type="text"
-          name="zipCode"
-          id="zipCode"
-          value={person.zipCode}
-          onChange={handleChange}
-        />{' '}
+        zip code: <input type="text" {...register('zipCode')} />{' '}
       </label>
       <button type="submit">save</button>
       <button type="reset" onClick={handleCancel}>
